@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TransponderReceiver;
 
 namespace ATM.Application
 {
@@ -10,6 +11,19 @@ namespace ATM.Application
     {
         static void Main(string[] args)
         {
+            var transponderReceiver = TransponderReceiverFactory.CreateTransponderDataReceiver();
+            transponderReceiver.TransponderDataReady += TransponderReceiverOnTransponderDataReady;
+
+            Console.ReadKey();
+        }
+
+        private static void TransponderReceiverOnTransponderDataReady(object sender, RawTransponderDataEventArgs rawTransponderDataEventArgs)
+        {
+            foreach (var data in rawTransponderDataEventArgs.TransponderData)
+            {
+                Console.WriteLine(data);
+            }
+            Console.WriteLine();
         }
     }
 }
