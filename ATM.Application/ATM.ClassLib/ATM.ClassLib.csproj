@@ -46,6 +46,7 @@
     <Compile Include="Receiver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TrackObject.cs" />
+    <Compile Include="TrackStore.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

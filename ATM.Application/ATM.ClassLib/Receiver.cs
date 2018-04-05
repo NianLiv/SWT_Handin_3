@@ -10,6 +10,7 @@ namespace ATM.ClassLib
     public class Receiver
     {
         private List<string> _receivedTags;
+        private TrackStore _trackStore = new TrackStore();
 
         public Receiver()
         {
@@ -26,7 +27,8 @@ namespace ATM.ClassLib
                 if (!_receivedTags.Contains(split[0]))
                 {
                     _receivedTags.Add(split[0]);
-                    new TrackObject(split);
+                    var newTrack = new TrackObject(split);
+                    _trackStore.saveTrack(newTrack);
                 }
             }
         }
