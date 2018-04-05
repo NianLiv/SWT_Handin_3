@@ -10,13 +10,14 @@ namespace ATM.ClassLib
     public class Receiver
     {
         private List<string> _receivedTags;
-        private TrackStore _trackStore = new TrackStore();
+        private TrackStore _trackStore;
 
-        public Receiver()
+        public Receiver(TrackStore store)
         {
             var transponderReceiver = TransponderReceiverFactory.CreateTransponderDataReceiver();
             transponderReceiver.TransponderDataReady += TransponderReceiverOnTransponderDataReady;
             _receivedTags = new List<string>();
+            _trackStore = store;
         }
 
         private void TransponderReceiverOnTransponderDataReady(object sender, RawTransponderDataEventArgs rawTransponderDataEventArgs)

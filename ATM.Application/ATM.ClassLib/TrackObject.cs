@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ATM.ClassLib
 {
-    class TrackObject
+    public class TrackObject
     {
         public TrackObject(string[] arr)
         {
@@ -17,10 +17,10 @@ namespace ATM.ClassLib
             TimeStamp = long.Parse(arr[4]);
         }
 
-        public string Tag { get; set; }
-        public int XCoord { get; set; }
-        public int YCoord { get; set; }
-        public int Altitude { get; set; }
-        public long  TimeStamp { get; set; }
+        public string Tag { get; }
+        public int XCoord { get; }
+        public int YCoord { get; }
+        public int Altitude { get; }
+        public long  TimeStamp { get; }
     }
 }

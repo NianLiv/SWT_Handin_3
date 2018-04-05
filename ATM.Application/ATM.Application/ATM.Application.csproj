@@ -51,5 +51,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ATM.ClassLib\ATM.ClassLib.csproj">
+      <Project>{e95e37c7-1825-44e6-9e83-992c65cebc20}</Project>
+      <Name>ATM.ClassLib</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

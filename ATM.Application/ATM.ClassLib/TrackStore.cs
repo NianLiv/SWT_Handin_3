@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace ATM.ClassLib
 {
-    class TrackStore
+    public class TrackStore
     {
-        public List<TrackObject> trackObjects;
+        public List<TrackObject> trackObjects { get; }
 
         public TrackStore() => trackObjects = new List<TrackObject>();
 
