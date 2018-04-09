@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using TransponderReceiver;
@@ -11,34 +12,27 @@ namespace AirTrafficMonitoring.Lib
     // Track Objectification Software
     public class Tos
     {
-        private readonly List<Track> _recievedTracks = new List<Track>();
-        public List<Track> RecievedTracks => _recievedTracks;
+        private readonly Dictionary<string, Track> _recievedTracks = new Dictionary<string, Track>();
+        public Dictionary<string, Track> RecievedTracks => _recievedTracks;
 
         public Tos(ITransponderReceiver iTransponderReceiver)
         {
-            //iTransponderReceiver.TransponderDataReady += (sender, args) =>
-            //{
-            //    var rawList = args.TransponderData;
-            //    foreach (var line in rawList)
-            //    {
-            //        var newTrack = CreateTrackObject(line);
-            //        _recievedTracks.Add(newTrack);
-            //    }
-            //    PrintTracks();
-            //};
-
-            iTransponderReceiver.TransponderDataReady += ITransponderReceiverOnTransponderDataReady;
-        }
-
-        private void ITransponderReceiverOnTransponderDataReady(object sender, RawTransponderDataEventArgs rawTransponderDataEventArgs)
-        {
-            var rawList = rawTransponderDataEventArgs.TransponderData;
-            foreach (var line in rawList)
+            iTransponderReceiver.TransponderDataReady += (sender, args) =>
             {
-                var newTrack = CreateTrackObject(line);
-                _recievedTracks.Add(newTrack);
-            }
-            PrintTracks();
+                var rawList = args.TransponderData;
+                foreach (var line in rawList)
+                {
+                    var newTrack = CreateTrackObject(line);
+
+                    if(!RecievedTracks.ContainsKey(newTrack.Tag))
+                        RecievedTracks.Add(newTrack.Tag, newTrack);
+                    else
+                    {
+                        RecievedTracks[newTrack.Tag] = newTrack;
+                    }
+                }
+                //PrintTracks();
+            };
         }
 
         private Track CreateTrackObject(string line)
@@ -68,15 +62,13 @@ namespace AirTrafficMonitoring.Lib
             Console.Clear();
             foreach (var track in _recievedTracks)
             {
-                Console.WriteLine(track.Tag);
-                Console.WriteLine(track.PositionX);
-                Console.WriteLine(track.PositionY);
-                Console.WriteLine(track.Altitude);
-                Console.WriteLine(track.Timestamp);
+                Console.WriteLine(track.Value.Tag);
+                Console.WriteLine(track.Value.PositionX);
+                Console.WriteLine(track.Value.PositionY);
+                Console.WriteLine(track.Value.Altitude);
+                Console.WriteLine(track.Value.Timestamp);
                 Console.WriteLine();
             }
-            _recievedTracks.Clear();
         }
-
     }
 }

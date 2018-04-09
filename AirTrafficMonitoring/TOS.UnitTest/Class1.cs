@@ -28,7 +28,7 @@ namespace TOS.UnitTest
 
             _transponderReceiver.TransponderDataReady += Raise.EventWith(args);
 
-            Assert.That(_uut.RecievedTracks[0].Tag, Is.EqualTo("ATR423"));
+            Assert.That(_uut.RecievedTracks["ATR423"].PositionX, Is.EqualTo(39045));
         }
 
     }
