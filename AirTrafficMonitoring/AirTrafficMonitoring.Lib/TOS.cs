@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -23,12 +24,14 @@ namespace AirTrafficMonitoring.Lib
                 foreach (var line in rawList)
                 {
                     var newTrack = CreateTrackObject(line);
-
-                    if(!RecievedTracks.ContainsKey(newTrack.Tag))
-                        RecievedTracks.Add(newTrack.Tag, newTrack);
-                    else
+                    if (newTrack != null)
                     {
-                        RecievedTracks[newTrack.Tag] = newTrack;
+                        if (!RecievedTracks.ContainsKey(newTrack.Tag))
+                            RecievedTracks.Add(newTrack.Tag, newTrack);
+                        else
+                        {
+                            RecievedTracks[newTrack.Tag] = newTrack;
+                        }
                     }
                 }
                 //PrintTracks();
@@ -38,6 +41,7 @@ namespace AirTrafficMonitoring.Lib
         private Track CreateTrackObject(string line)
         {
             var rawData = line.Split(';');
+            if (rawData.Length != 5) return null;
             var timeStamp = rawData[4];
             return new Track
             {
@@ -60,6 +64,7 @@ namespace AirTrafficMonitoring.Lib
         private void PrintTracks()
         {
             Console.Clear();
+            Debug.WriteLine(RecievedTracks.Count);
             foreach (var track in _recievedTracks)
             {
                 Console.WriteLine(track.Value.Tag);
