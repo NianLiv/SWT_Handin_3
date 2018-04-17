@@ -43,6 +43,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AirSpace.cs" />
     <Compile Include="AirTrafficController.cs" />
     <Compile Include="CollisionDetector.cs" />
     <Compile Include="Interfaces\IAirSpace.cs" />
