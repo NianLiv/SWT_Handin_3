@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AirTrafficMonitoring.Lib.Interfaces
 {
-    interface IRender
+    public interface IRender
     {
         void DesignObjekt(Track obj);
     }
