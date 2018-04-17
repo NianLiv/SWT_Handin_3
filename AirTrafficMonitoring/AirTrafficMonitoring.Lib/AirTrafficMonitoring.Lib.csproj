@@ -43,7 +43,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\IAirspace.cs" />
+    <Compile Include="Interfaces\ICollisionDetector.cs" />
     <Compile Include="Interfaces\IOutput.cs" />
+    <Compile Include="Interfaces\IRender.cs" />
+    <Compile Include="Interfaces\ITrackStorage.cs" />
     <Compile Include="Output.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TOS.cs" />
