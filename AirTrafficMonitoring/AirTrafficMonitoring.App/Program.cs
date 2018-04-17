@@ -1,6 +1,8 @@
 ﻿using System;
-using TransponderReceiver;
+using System.Collections.Generic;
 using AirTrafficMonitoring.Lib;
+using AirTrafficMonitoring.Lib.Interfaces;
+using TransponderReceiver;
 
 namespace AirTrafficMonitoring.App
 {
@@ -8,7 +10,12 @@ namespace AirTrafficMonitoring.App
     {
         private static void Main()
         {
-            new Tos(TransponderReceiverFactory.CreateTransponderDataReceiver());
+            Console.CursorVisible = false;
+            var tos = new Tos(TransponderReceiverFactory.CreateTransponderDataReceiver());
+            var atm = new AirTrafficController(new CollisionDetector(), new TrackStorage(),  new AirSpace(), new ConsoleView(new ConsoleOutput()), null);
+
+            tos.Attach(atm);
+
             Console.ReadLine();
         }
     }  

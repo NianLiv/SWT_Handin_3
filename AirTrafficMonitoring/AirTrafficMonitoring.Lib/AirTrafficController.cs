@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,11 +23,35 @@ namespace AirTrafficMonitoring.Lib
             _airSpace = airs;
             _render = r;
             _log = l;
+
+            _collisonDetector.Separation += (s, e) =>
+            {
+                //Print error
+                //Gem i Log
+            };
         }
+
+        
 
         public void Update(Tos obj)
         {
-            
+            var recievedTracks = obj.RecievedTracks;
+
+            foreach (var track in recievedTracks)
+            {
+                if (_airSpace.IsInValidAirSpace(track))
+                {
+                    if (_trackStorage.Contains(track))
+                        _trackStorage.Update(track);
+                    else
+                        _trackStorage.Add(track);
+                }
+                else if (_trackStorage.Contains(track) && !_airSpace.IsInValidAirSpace(track))
+                    _trackStorage.Remove(track);
+            }
+
+            _collisonDetector.CheckForCollision(_trackStorage.GetAllTracks());
+            _render.PrintTrackData(_trackStorage.GetAllTracks());
         }
     }
 }

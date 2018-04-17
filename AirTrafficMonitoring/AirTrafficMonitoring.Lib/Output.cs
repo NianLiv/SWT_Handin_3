@@ -3,8 +3,10 @@ using AirTrafficMonitoring.Lib.Interfaces;
 
 namespace AirTrafficMonitoring.Lib
 {
-    class Output : IOutput
+    public class ConsoleOutput : IOutput
     {
-        public void OutputLine(string line) => Console.WriteLine(line);
+        public void OutputLine(string line) => Console.Write(line);
+        public void SetCursorPosition(int left, int top) => Console.SetCursorPosition(left, top);
+        public void SetWindowSize(int width, int height) => Console.SetWindowSize(width, height);
     }
 }

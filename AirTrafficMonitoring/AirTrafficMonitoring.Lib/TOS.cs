@@ -18,6 +18,7 @@ namespace AirTrafficMonitoring.Lib
                     RecievedTracks.Add(CreateTrackObject(line));
 
                 Notify(this);
+                RecievedTracks.Clear();
             };
         }
 

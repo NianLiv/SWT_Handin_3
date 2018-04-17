@@ -26,5 +26,7 @@ namespace AirTrafficMonitoring.Lib
             if (Timestamp != track.Timestamp)
                 Timestamp = track.Timestamp;
         }
+
+        public override string ToString() => $"{Tag}: ({PositionX}, {PositionY}) ALT: {Altitude}";
     }
 }

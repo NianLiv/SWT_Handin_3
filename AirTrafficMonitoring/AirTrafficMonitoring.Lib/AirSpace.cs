@@ -7,7 +7,7 @@ using AirTrafficMonitoring.Lib.Interfaces;
 
 namespace AirTrafficMonitoring.Lib
 {
-    class AirSpace : IAirSpace
+    public class AirSpace : IAirSpace
     {
         public bool IsInValidAirSpace(Track track)
         {
@@ -18,10 +18,16 @@ namespace AirTrafficMonitoring.Lib
             int _LowerBound = 500;
             int _UpperBound = 20000;
 
-            if (track.Altitude < _LowerBound && track.Altitude > _UpperBound && (track.PositionX < _WestBound || track.PositionX > _EastBound) && (track.PositionY < _SouthBound || track.PositionY > _NorthBound))
+            if (track.Altitude < _LowerBound
+                || track.Altitude > _UpperBound
+                || track.PositionX < _WestBound
+                || track.PositionX > _EastBound
+                || track.PositionY > _NorthBound
+                || track.PositionY < _SouthBound)
+            {
                 return false;
-
-            return true;
+            }
+            else return true;
         }
     }
 }
