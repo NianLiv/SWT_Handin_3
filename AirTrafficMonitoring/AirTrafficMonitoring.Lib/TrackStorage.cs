@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using AirTrafficMonitoring.Lib.Interfaces;
 
 namespace AirTrafficMonitoring.Lib
 {
-    class TrackStorage : ITrackStorage
+    public class TrackStorage : ITrackStorage
     {
-        private Dictionary<string, Track> _tracks;
+        private readonly Dictionary<string, Track> _tracks;
 
         public TrackStorage()
         {

@@ -4,9 +4,9 @@ using AirTrafficMonitoring.Lib;
 
 namespace AirTrafficMonitoring.App
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main()
         {
             new Tos(TransponderReceiverFactory.CreateTransponderDataReceiver());
             Console.ReadLine();
