@@ -11,6 +11,13 @@ namespace AirTrafficMonitoring.Lib.Interfaces
         public Track currentTrack;
         public Track otherTrack;
         public DateTime timeOfConflict;
+
+        public CollisionEventArgs(Track ct, Track ot, DateTime toc)
+        {
+            currentTrack = ct;
+            otherTrack = ot;
+            timeOfConflict = toc;
+        }
     }
 
     public interface ICollisionDetector

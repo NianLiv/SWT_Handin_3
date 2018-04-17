@@ -17,9 +17,10 @@ namespace AirTrafficMonitoring.Lib
             Y = y;
         }
 
-        public DistanceTo(Point otherPoint)
+        public double DistanceTo(Point otherPoint)
         {
-
+            return Math.Sqrt(Math.Pow((otherPoint.X - X), 2) + Math.Pow((otherPoint.Y - Y), 2));
         }
     }
+    
 }

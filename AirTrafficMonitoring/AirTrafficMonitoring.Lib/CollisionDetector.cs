@@ -11,11 +11,6 @@ namespace AirTrafficMonitoring.Lib
     {
         public event EventHandler<CollisionEventArgs> Separation;
 
-        public CollisionDetector()
-        {
-
-        }
-
         public void CheckForCollision(List<Track> TrackList)
         {
             for (int i = 0; i < TrackList.Count; i++)
@@ -26,15 +21,21 @@ namespace AirTrafficMonitoring.Lib
                     var otherTrack = TrackList[j];
                     if (currentTrack != otherTrack)
                     {
-                        if(((currentTrack.Altitude - otherTrack.Altitude) < 300) && (currentTrack.PositionX))
+                        //Track coordinates in space
+                        var currentPoint = new Point(currentTrack.PositionX, currentTrack.PositionY);
+                        var otherPoint = new Point(otherTrack.PositionX, otherTrack.PositionY);
+
+                        //Checking for event
+                        if ((currentTrack.Altitude - otherTrack.Altitude) < 300 
+                            && (currentTrack.Altitude -otherTrack.Altitude) > -300
+                            && currentPoint.DistanceTo(otherPoint) < 5000)
+                        {
+                            var handler = Separation;
+                            handler?.Invoke(this, new CollisionEventArgs(currentTrack, otherTrack, currentTrack.Timestamp));
+                        }                       
                     }
                 }
             }
         }
-
-        
-        
-
-
     }
 }
