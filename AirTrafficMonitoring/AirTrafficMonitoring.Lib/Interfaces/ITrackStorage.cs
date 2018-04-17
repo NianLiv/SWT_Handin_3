@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AirTrafficMonitoring.Lib.Interfaces
 {
-    interface ITrackStorage
+    public interface ITrackStorage
     {
         void Storage(Track obj);
     }

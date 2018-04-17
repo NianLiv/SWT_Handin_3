@@ -47,6 +47,7 @@
     <Compile Include="AirTrafficController.cs" />
     <Compile Include="Interfaces\IAirSpace.cs" />
     <Compile Include="Interfaces\ICollisionDetector.cs" />
+    <Compile Include="Interfaces\Ilog.cs" />
     <Compile Include="Interfaces\IOutput.cs" />
     <Compile Include="Interfaces\IRender.cs" />
     <Compile Include="Interfaces\ITrackStorage.cs" />
