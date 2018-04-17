@@ -11,30 +11,21 @@ using TransponderReceiver;
 namespace AirTrafficMonitoring.Lib
 {
     // Track Objectification Software
-    public class Tos
+    public class Tos : Subject<Tos>
     {
-        private readonly Dictionary<string, Track> _recievedTracks = new Dictionary<string, Track>();
-        public Dictionary<string, Track> RecievedTracks => _recievedTracks;
+        private readonly List<Track> _recievedTracks = new List<Track>();
+        public List<Track> RecievedTracks { get => _recievedTracks;}
 
         public Tos(ITransponderReceiver iTransponderReceiver)
         {
             iTransponderReceiver.TransponderDataReady += (sender, args) =>
             {
-                var rawList = args.TransponderData;
-                foreach (var line in rawList)
+                foreach(var line in args.TransponderData)
                 {
-                    var newTrack = CreateTrackObject(line);
-                    if (newTrack != null)
-                    {
-                        if (!RecievedTracks.ContainsKey(newTrack.Tag))
-                            RecievedTracks.Add(newTrack.Tag, newTrack);
-                        else
-                        {
-                            RecievedTracks[newTrack.Tag] = newTrack;
-                        }
-                    }
+                    _recievedTracks.Add(CreateTrackObject(line));
                 }
-                //PrintTracks();
+
+                Notify(this);
             };
         }
 
@@ -59,21 +50,6 @@ namespace AirTrafficMonitoring.Lib
                     int.Parse(timeStamp.Substring(14, 3))
                 )
             };
-        }
-
-        private void PrintTracks()
-        {
-            Console.Clear();
-            Debug.WriteLine(RecievedTracks.Count);
-            foreach (var track in _recievedTracks)
-            {
-                Console.WriteLine(track.Value.Tag);
-                Console.WriteLine(track.Value.PositionX);
-                Console.WriteLine(track.Value.PositionY);
-                Console.WriteLine(track.Value.Altitude);
-                Console.WriteLine(track.Value.Timestamp);
-                Console.WriteLine();
-            }
         }
     }
 }
