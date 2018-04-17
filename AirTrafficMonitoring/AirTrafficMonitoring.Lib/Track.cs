@@ -13,5 +13,10 @@ namespace AirTrafficMonitoring.Lib
         public int PositionY { get; set; }
         public int Altitude { get; set; }
         public DateTime Timestamp { get; set; }
+
+        internal void Update(Track track)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
