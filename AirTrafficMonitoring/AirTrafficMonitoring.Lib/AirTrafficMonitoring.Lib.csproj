@@ -59,6 +59,7 @@
     <Compile Include="Subject.cs" />
     <Compile Include="TOS.cs" />
     <Compile Include="Track.cs" />
+    <Compile Include="TrackStorage.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

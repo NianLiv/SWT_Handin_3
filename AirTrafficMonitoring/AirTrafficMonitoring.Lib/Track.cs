@@ -16,7 +16,7 @@ namespace AirTrafficMonitoring.Lib
 
         internal void Update(Track track)
         {
-            throw new NotImplementedException();
+            
         }
     }
 }
