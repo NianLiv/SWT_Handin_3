@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace AirTrafficMonitoring.Lib.Interfaces
 {
-    interface IAirSpace
+    interface ILog
     {
-        int Boundary();
+        List<Track> LoggedTracks { get; }
+
+        //return type missing Logger(List<Track> logTracks);
     }
 }

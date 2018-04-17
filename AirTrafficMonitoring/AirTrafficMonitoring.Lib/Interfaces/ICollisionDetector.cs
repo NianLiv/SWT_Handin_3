@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace AirTrafficMonitoring.Lib.Interfaces
 {
-    public interface ICollisionDetector
+    interface ICollisionDetector
     {
-        List<Track> Tracks { get; }
 
-        //(missing return type) Collion(List<Track> track);
     }
 }
