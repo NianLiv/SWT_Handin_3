@@ -24,8 +24,6 @@ namespace AirTrafficMonitoring.Lib
             };
         }
 
-        
-
         public void Update(Tos obj)
         {
             var recievedTracks = obj.RecievedTracks;
