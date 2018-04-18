@@ -19,24 +19,25 @@ namespace AirTrafficMonitoring.Lib
             {
                 var currentTrack = TrackList[i];
                 for (int j = 0; j < TrackList.Count; j++)
-                {
+                { 
                     var otherTrack = TrackList[j];
                     if (currentTrack != otherTrack)
                     {
                         //Track coordinates in space
                         var currentPoint = new Point(currentTrack.PositionX, currentTrack.PositionY);
                         var otherPoint = new Point(otherTrack.PositionX, otherTrack.PositionY);
+                        var currentColpair = new CollisionPairs(currentTrack, otherTrack, currentTrack.Timestamp);
 
                         //Checking for event
                         if ((currentTrack.Altitude - otherTrack.Altitude) < 300 
                             && (currentTrack.Altitude -otherTrack.Altitude) > -300
                             && currentPoint.DistanceTo(otherPoint) < 5000)
                         {
-                            var currentColpair = new CollisionPairs(currentTrack, otherTrack, currentTrack.Timestamp);
                             if(!IsPairInList(currentColpair)) CollisionPairsList.Add(currentColpair);
                             var handler = Separation;
                             handler?.Invoke(this, new CollisionEventArgs(CollisionPairsList));
-                        }                  
+                        }
+                        else if (IsPairInList(currentColpair)) CollisionPairsList.Remove(currentColpair);
                     }
                 }
             }

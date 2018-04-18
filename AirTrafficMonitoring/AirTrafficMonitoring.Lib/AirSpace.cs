@@ -9,15 +9,19 @@ namespace AirTrafficMonitoring.Lib
 {
     public class AirSpace : IAirSpace
     {
+        public int _EastBound = 90000;
+        public int _WestBound = 10000;
+        public int _NorthBound = 90000;
+        public int _SouthBound = 10000;
+        public int _LowerBound = 500;
+        public int _UpperBound = 20000;
+
+        public AirSpace() : this() { }
+
+        public AirSpace(int E, int W, int N, int S, int L, int U)
+
         public bool IsInValidAirSpace(Track track)
         {
-            int _EastBound = 90000;
-            int _WestBound = 10000;
-            int _NorthBound = 90000;
-            int _SouthBound = 10000;
-            int _LowerBound = 500;
-            int _UpperBound = 20000;
-
             if (track.Altitude < _LowerBound
                 || track.Altitude > _UpperBound
                 || track.PositionX < _WestBound
