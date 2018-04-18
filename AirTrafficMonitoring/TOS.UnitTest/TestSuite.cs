@@ -31,10 +31,10 @@ namespace TOS.UnitTest
             _transponderReceiver.TransponderDataReady += Raise.EventWith(args);
 
             //Using multiple asserts to ensure every property is stored correct.
-            Assert.That(_uut.RecievedTracks["ATR423"].PositionX, Is.EqualTo(39045));
-            Assert.That(_uut.RecievedTracks["ATR423"].PositionY, Is.EqualTo(12932));
-            Assert.That(_uut.RecievedTracks["ATR423"].Altitude, Is.EqualTo(14000));
-            Assert.That(_uut.RecievedTracks["ATR423"].Timestamp, Is.EqualTo(new DateTime(2015, 10, 06, 21, 34, 56, 789)));
+            Assert.That(_uut.RecievedTracks[1].PositionX, Is.EqualTo(39045));
+            Assert.That(_uut.RecievedTracks[1].PositionY, Is.EqualTo(12932));
+            Assert.That(_uut.RecievedTracks[1].Altitude, Is.EqualTo(14000));
+            Assert.That(_uut.RecievedTracks[1].Timestamp, Is.EqualTo(new DateTime(2015, 10, 06, 21, 34, 56, 789)));
         }
 
         //Test to check if the Track object is correctly updated.
@@ -55,10 +55,10 @@ namespace TOS.UnitTest
             _transponderReceiver.TransponderDataReady += Raise.EventWith(args);
 
             //Check that the nenw position is stored.
-            Assert.That(_uut.RecievedTracks["ATR423"].PositionX, Is.EqualTo(38045));
-            Assert.That(_uut.RecievedTracks["ATR423"].PositionY, Is.EqualTo(12332));
-            Assert.That(_uut.RecievedTracks["ATR423"].Altitude, Is.EqualTo(14100));
-            Assert.That(_uut.RecievedTracks["ATR423"].Timestamp, Is.EqualTo(new DateTime(2015, 11, 07, 21, 34, 56, 789)));
+            Assert.That(_uut.RecievedTracks[1].PositionX, Is.EqualTo(38045));
+            Assert.That(_uut.RecievedTracks[1].PositionY, Is.EqualTo(12332));
+            Assert.That(_uut.RecievedTracks[1].Altitude, Is.EqualTo(14100));
+            Assert.That(_uut.RecievedTracks[1].Timestamp, Is.EqualTo(new DateTime(2015, 11, 07, 21, 34, 56, 789)));
         }
 
         //Test to check if all tracks is stored in the dictionary
