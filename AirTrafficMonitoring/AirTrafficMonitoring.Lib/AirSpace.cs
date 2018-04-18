@@ -9,16 +9,25 @@ namespace AirTrafficMonitoring.Lib
 {
     public class AirSpace : IAirSpace
     {
-        public int _EastBound = 90000;
-        public int _WestBound = 10000;
-        public int _NorthBound = 90000;
-        public int _SouthBound = 10000;
-        public int _LowerBound = 500;
-        public int _UpperBound = 20000;
+        public int _EastBound;
+        public int _WestBound;
+        public int _NorthBound;
+        public int _SouthBound;
+        public int _LowerBound;
+        public int _UpperBound;
 
-        public AirSpace() : this() { }
+        public AirSpace() : this(90000, 10000, 90000, 10000, 500, 20000)
+        { }
 
         public AirSpace(int E, int W, int N, int S, int L, int U)
+        {
+            _EastBound = E;
+            _WestBound = W;
+            _NorthBound = N;
+            _SouthBound = S;
+            _LowerBound = L;
+            _UpperBound = U;
+        }
 
         public bool IsInValidAirSpace(Track track)
         {
