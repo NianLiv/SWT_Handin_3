@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -21,7 +22,7 @@ namespace AirTrafficMonitoring.Lib
                 for (int j = 0; j < TrackList.Count; j++)
                 { 
                     var otherTrack = TrackList[j];
-                    if (currentTrack != otherTrack)
+                    if (currentTrack.Tag != otherTrack.Tag)
                     {
                         //Track coordinates in space
                         var currentPoint = new Point(currentTrack.PositionX, currentTrack.PositionY);
@@ -36,13 +37,18 @@ namespace AirTrafficMonitoring.Lib
                             if(!IsPairInList(currentColpair)) CollisionPairsList.Add(currentColpair);
 
                             if(CollisionPairsList.Count >= 2)
-                                CollisionPairsList.Find(e => e.currentTrack.Tag == e.otherTrack.Tag).timeOfConflict = currentTrack.Timestamp;
+                                CollisionPairsList.Find(e => e.currentTrack.Tag == currentTrack.Tag && e.otherTrack.Tag == otherTrack.Tag)
+                                    .timeOfConflict = currentTrack.Timestamp;
 
 
                             var handler = Separation;
                             handler?.Invoke(this, new CollisionEventArgs(CollisionPairsList));
                         }
-                        else if (IsPairInList(currentColpair)) CollisionPairsList.Remove(currentColpair);
+                        else if (IsPairInList(currentColpair))
+                        {
+                            CollisionPairsList.Remove(currentColpair);
+                            
+                        }
                     }
                 }
             }
