@@ -52,7 +52,7 @@ namespace AirTrafficMonitoring.Lib
 
         private void RenderTrackData(List<Track> tracks)
         {
-            Clear((Width - Width / 3) + 1, 0, Width - 1, Height);
+            //Clear((Width - Width / 3) + 1, 0, Width - 1, Height);
 
             int lineNum = 0;
             foreach (var track in tracks)
@@ -67,10 +67,13 @@ namespace AirTrafficMonitoring.Lib
         private void RenderMap(List<Track> tracks)
         {
             Clear(0, 0, Width - Width / 3, Height - Height / 3);
+            var aspectW = 90000 / (Width - Width / 3);
+            var aspectH = 90000 / (Height - Height / 3);
 
             foreach (var track in tracks)
             {
-                _output.SetCursorPosition(track.PositionX % (Width - Width / 3), track.PositionY % (Height - Height / 3));
+                //_output.SetCursorPosition(track.PositionX % (Width - Width / 3), track.PositionY % (Height - Height / 3));
+                _output.SetCursorPosition(track.PositionX / aspectW, track.PositionY / aspectH);
                 _output.OutputLine("x");
             }
         }
