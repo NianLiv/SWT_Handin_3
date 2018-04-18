@@ -16,7 +16,7 @@ namespace AirTrafficMonitoring.Lib
         public ConsoleView(IOutput output)
         {
             Height = Console.LargestWindowHeight - 10;
-            Width = Console.LargestWindowWidth - 30;
+            Width = Console.LargestWindowWidth;
 
             _output = output;
 
