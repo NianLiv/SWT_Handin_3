@@ -22,6 +22,11 @@ namespace AirTrafficMonitoring.Lib
             {
                 _render.PrintCollisionTracks(e.CollisionPairs);
             };
+
+            _collisonDetector.NotColliding += (s, e) =>
+            {
+                
+            }
         }
 
         public void Update(Tos obj)

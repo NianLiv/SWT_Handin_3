@@ -12,6 +12,7 @@ namespace AirTrafficMonitoring.Lib
     public class CollisionDetector : ICollisionDetector
     {
         public event EventHandler<CollisionEventArgs> Separation;
+        public event EventHandler<CollisionEventArgs> NotColliding;
         public List<CollisionPairs> CollisionPairsList { get; } = new List<CollisionPairs>();
 
         public void CheckForCollision(List<Track> TrackList)
@@ -27,6 +28,8 @@ namespace AirTrafficMonitoring.Lib
                         //Track coordinates in space
                         var currentPoint = new Point(currentTrack.PositionX, currentTrack.PositionY);
                         var otherPoint = new Point(otherTrack.PositionX, otherTrack.PositionY);
+
+                        //Collision Pair to check
                         var currentColpair = new CollisionPairs(currentTrack, otherTrack, currentTrack.Timestamp);
 
                         //Checking for event
@@ -40,14 +43,20 @@ namespace AirTrafficMonitoring.Lib
                                 CollisionPairsList.Find(e => e.currentTrack.Tag == currentTrack.Tag && e.otherTrack.Tag == otherTrack.Tag)
                                     .timeOfConflict = currentTrack.Timestamp;
 
+                            Debug.WriteLine("Tilføjet til listen: " + CollisionPairsList.Count);
 
                             var handler = Separation;
                             handler?.Invoke(this, new CollisionEventArgs(CollisionPairsList));
                         }
                         else if (IsPairInList(currentColpair))
                         {
-                            CollisionPairsList.Remove(currentColpair);
-                            
+                            var removeObj = CollisionPairsList.Find(e =>
+                                e.currentTrack.Tag == currentTrack.Tag && e.otherTrack.Tag == otherTrack.Tag);
+                            CollisionPairsList.Remove(removeObj);
+                            var handler = NotColliding;
+                            handler?.Invoke(this, new CollisionEventArgs(CollisionPairsList));
+
+                            Debug.WriteLine("Fjerner fra listen: " + CollisionPairsList.Count);
                         }
                     }
                 }

@@ -53,12 +53,18 @@ namespace AirTrafficMonitoring.Lib
         public void PrintCollisionTracks(List<CollisionPairs> pairs)
         {
             int lineNum = 0;
+            
             foreach (var pair in pairs)
             {
                 _output.SetCursorPosition(0, (Height - Height / 3) + 1 + lineNum);
                 _output.OutputLine(pair.ToString());
                 lineNum++;
             }
+        }
+
+        public void ClearCollisionArea()
+        {
+            Clear(0, (Height - Height / 3) + 1, Width - Width / 3, Height);
         }
 
         private void RenderTrackData(List<Track> tracks)
