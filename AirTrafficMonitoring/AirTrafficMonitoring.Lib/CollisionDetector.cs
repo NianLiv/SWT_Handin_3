@@ -33,36 +33,41 @@ namespace AirTrafficMonitoring.Lib
                         var currentColpair = new CollisionPairs(currentTrack, otherTrack, currentTrack.Timestamp);
 
                         //Checking for event
-                        if ((currentTrack.Altitude - otherTrack.Altitude) < 300 
-                            && (currentTrack.Altitude -otherTrack.Altitude) > -300
-                            && currentPoint.DistanceTo(otherPoint) < 5000)
+                        if ((currentTrack.Altitude - otherTrack.Altitude) < 1300 
+                            && (currentTrack.Altitude -otherTrack.Altitude) > -1300
+                            && currentPoint.DistanceTo(otherPoint) < 15000)
                         {
                             if(!IsPairInList(currentColpair)) CollisionPairsList.Add(currentColpair);
 
-                            if(CollisionPairsList.Count >= 2)
+                            //Update timestamp.
+                            //>= 2 needed to avoid NullReferenceException at very first entry.
+                            //if(CollisionPairsList.Count >= 2)
                                 CollisionPairsList.Find(e => e.currentTrack.Tag == currentTrack.Tag && e.otherTrack.Tag == otherTrack.Tag)
                                     .timeOfConflict = currentTrack.Timestamp;
 
-                            Debug.WriteLine("Tilføjet til listen: " + CollisionPairsList.Count);
-
+                            //Invoking eventhandler
                             var handler = Separation;
                             handler?.Invoke(this, new CollisionEventArgs(CollisionPairsList));
                         }
+                        //Remove CollisionPair list if the pair is not colliding anymore
                         else if (IsPairInList(currentColpair))
                         {
+                            //Find the object to remove
                             var removeObj = CollisionPairsList.Find(e =>
                                 e.currentTrack.Tag == currentTrack.Tag && e.otherTrack.Tag == otherTrack.Tag);
                             CollisionPairsList.Remove(removeObj);
+
+                            //Invoking handler to update Console.
                             var handler = NotColliding;
                             handler?.Invoke(this, new CollisionEventArgs(CollisionPairsList));
 
-                            Debug.WriteLine("Fjerner fra listen: " + CollisionPairsList.Count);
                         }
                     }
                 }
             }
         }
 
+        //Utility function to check if a pair is already in the list.
         private bool IsPairInList(CollisionPairs pairToCheck)
         {
             foreach (var pair in CollisionPairsList)
@@ -76,8 +81,9 @@ namespace AirTrafficMonitoring.Lib
 
             return false;
         }
-    }
 
+    }
+    //Ulitlity class to wrap collinding tracks and a DateTime-object.
     public class CollisionPairs
     {
         public Track currentTrack;
@@ -97,4 +103,5 @@ namespace AirTrafficMonitoring.Lib
                    timeOfConflict;
         }
     }
+
 }

@@ -26,8 +26,8 @@ namespace AirTrafficMonitoring.Lib
 
             _collisonDetector.NotColliding += (s, e) =>
             {
-                
-            }
+                _render.PrintCollisionTracks(e.CollisionPairs, true);
+            };
         }
 
         public void Update(Tos obj)

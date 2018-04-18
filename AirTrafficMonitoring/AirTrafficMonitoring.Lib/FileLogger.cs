@@ -16,13 +16,13 @@ namespace AirTrafficMonitoring.Lib
 
         public void LogCollisionToFile(List<CollisionPairs> collisionPairs)
         {
-            using (StreamWriter writer = new StreamWriter(FilePath, true))
-            {
-                foreach( var pair in collisionPairs)
-                {
-                    writer.WriteLine(pair.ToString());
-                }
-            }
+            //using (StreamWriter writer = new StreamWriter(FilePath, true))
+            //{
+            //    foreach( var pair in collisionPairs)
+            //    {
+            //        writer.WriteLine(pair.ToString());
+            //    }
+            //}
         }
     }
 }
