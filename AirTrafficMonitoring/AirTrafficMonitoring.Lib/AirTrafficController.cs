@@ -20,9 +20,7 @@ namespace AirTrafficMonitoring.Lib
 
             _collisonDetector.Separation += (s, e) =>
             {
-                //Print error
-                //Gem i Log
-                
+                _render.PrintCollisionTracks(e.CollisionPairs);
             };
         }
 

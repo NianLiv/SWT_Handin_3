@@ -50,6 +50,17 @@ namespace AirTrafficMonitoring.Lib
             RenderTrackData(tracks);
         }
 
+        public void PrintCollisionTracks(List<CollisionPairs> pairs)
+        {
+            int lineNum = 0;
+            foreach (var pair in pairs)
+            {
+                _output.SetCursorPosition(0, (Height - Height / 3) + 1 + lineNum);
+                _output.OutputLine(pair.ToString());
+                lineNum++;
+            }
+        }
+
         private void RenderTrackData(List<Track> tracks)
         {
             //Clear((Width - Width / 3) + 1, 0, Width - 1, Height);

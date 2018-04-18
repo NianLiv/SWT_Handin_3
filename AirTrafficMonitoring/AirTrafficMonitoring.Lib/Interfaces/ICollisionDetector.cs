@@ -8,15 +8,10 @@ namespace AirTrafficMonitoring.Lib.Interfaces
 {
     public class CollisionEventArgs : EventArgs
     {
-        public Track currentTrack;
-        public Track otherTrack;
-        public DateTime timeOfConflict;
-
-        public CollisionEventArgs(Track ct, Track ot, DateTime toc)
+        public List<CollisionPairs> CollisionPairs { get; }
+        public CollisionEventArgs(List<CollisionPairs> colpairs)
         {
-            currentTrack = ct;
-            otherTrack = ot;
-            timeOfConflict = toc;
+            CollisionPairs = colpairs;
         }
     }
 
@@ -24,5 +19,6 @@ namespace AirTrafficMonitoring.Lib.Interfaces
     {
         event EventHandler<CollisionEventArgs> Separation;
         void CheckForCollision(List<Track> TrackList);
+        List<CollisionPairs> CollisionPairsList { get; }
     }
 }
