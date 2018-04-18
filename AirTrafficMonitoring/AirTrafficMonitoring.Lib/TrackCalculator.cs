@@ -22,7 +22,7 @@ namespace AirTrafficMonitoring.Lib
         {
             int deltaX = x2 - x1;
             int deltaY = y2 - y1;
-            double angleInDegrees = Math.Atan2(deltaY, deltaX);
+            double angleInDegrees = Math.Atan2(deltaY, deltaX) * (180/Math.PI);
             return (int) angleInDegrees;
         }
     }
