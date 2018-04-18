@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AirTrafficMonitoring.Lib
 {
@@ -14,9 +10,23 @@ namespace AirTrafficMonitoring.Lib
         public int Altitude { get; set; }
         public DateTime Timestamp { get; set; }
 
-        internal void Update(Track track)
+        public void Update(Track track)
         {
-            throw new NotImplementedException();
+            if (this == track || Tag != track.Tag) return;
+
+            if (PositionX != track.PositionX)
+                PositionX = track.PositionX;
+
+            if (PositionY != track.PositionY)
+                PositionY = track.PositionY;
+
+            if (Altitude != track.Altitude)
+                Altitude = track.Altitude;
+
+            if (Timestamp != track.Timestamp)
+                Timestamp = track.Timestamp;
         }
+
+        public override string ToString() => $"{Tag}: ({PositionX}, {PositionY}) ALT: {Altitude}";
     }
 }

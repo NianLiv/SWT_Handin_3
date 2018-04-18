@@ -1,7 +1,9 @@
 ﻿namespace AirTrafficMonitoring.Lib.Interfaces
 {
-    interface IOutput
+    public interface IOutput
     {
-       void OutputLine(string line); 
+       void OutputLine(string line);
+       void SetCursorPosition(int left, int top);
+       void SetWindowSize(int width, int height);
     } 
 }

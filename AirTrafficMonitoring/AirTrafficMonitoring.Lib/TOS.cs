@@ -1,10 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using TransponderReceiver;
 
 
@@ -13,19 +8,17 @@ namespace AirTrafficMonitoring.Lib
     // Track Objectification Software
     public class Tos : Subject<Tos>
     {
-        private readonly List<Track> _recievedTracks = new List<Track>();
-        public List<Track> RecievedTracks { get => _recievedTracks;}
+        public List<Track> RecievedTracks { get; } = new List<Track>();
 
         public Tos(ITransponderReceiver iTransponderReceiver)
         {
             iTransponderReceiver.TransponderDataReady += (sender, args) =>
             {
                 foreach(var line in args.TransponderData)
-                {
-                    _recievedTracks.Add(CreateTrackObject(line));
-                }
+                    RecievedTracks.Add(CreateTrackObject(line));
 
                 Notify(this);
+                RecievedTracks.Clear();
             };
         }
 

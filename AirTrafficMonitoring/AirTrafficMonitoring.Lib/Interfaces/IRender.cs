@@ -8,6 +8,7 @@ namespace AirTrafficMonitoring.Lib.Interfaces
 {
     public interface IRender
     {
-        void DesignObjekt(Track obj);
+        void PrintTrackData(List<Track> tracks);
+        void PrintCollisionTracks(List<CollisionPairs> pairs);
     }
 }

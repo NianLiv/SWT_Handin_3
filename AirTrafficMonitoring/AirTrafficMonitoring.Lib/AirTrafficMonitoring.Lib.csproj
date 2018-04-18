@@ -30,6 +30,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -46,6 +47,7 @@
     <Compile Include="AirSpace.cs" />
     <Compile Include="AirTrafficController.cs" />
     <Compile Include="CollisionDetector.cs" />
+    <Compile Include="ConsoleView.cs" />
     <Compile Include="Interfaces\IAirSpace.cs" />
     <Compile Include="Interfaces\ICollisionDetector.cs" />
     <Compile Include="Interfaces\Ilog.cs" />
@@ -59,6 +61,7 @@
     <Compile Include="Subject.cs" />
     <Compile Include="TOS.cs" />
     <Compile Include="Track.cs" />
+    <Compile Include="TrackStorage.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

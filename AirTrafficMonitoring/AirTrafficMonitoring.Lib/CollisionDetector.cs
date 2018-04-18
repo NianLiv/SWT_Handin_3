@@ -8,7 +8,7 @@ using AirTrafficMonitoring.Lib.Interfaces;
 
 namespace AirTrafficMonitoring.Lib
 {
-    class CollisionDetector : ICollisionDetector
+    public class CollisionDetector : ICollisionDetector
     {
         public event EventHandler<CollisionEventArgs> Separation;
         public List<CollisionPairs> CollisionPairsList { get; } = new List<CollisionPairs>();
