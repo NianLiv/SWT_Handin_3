@@ -34,7 +34,11 @@ namespace AirTrafficMonitoring.Lib
                             && currentPoint.DistanceTo(otherPoint) < 5000)
                         {
                             if(!IsPairInList(currentColpair)) CollisionPairsList.Add(currentColpair);
-                            CollisionPairsList.Find(e => e.currentTrack.Tag == e.otherTrack.Tag).timeOfConflict = currentTrack.Timestamp;
+
+                            if(CollisionPairsList.Count >= 2)
+                                CollisionPairsList.Find(e => e.currentTrack.Tag == e.otherTrack.Tag).timeOfConflict = currentTrack.Timestamp;
+
+
                             var handler = Separation;
                             handler?.Invoke(this, new CollisionEventArgs(CollisionPairsList));
                         }
