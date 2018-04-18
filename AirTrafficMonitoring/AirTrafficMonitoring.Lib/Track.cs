@@ -33,6 +33,6 @@ namespace AirTrafficMonitoring.Lib
                 Timestamp = track.Timestamp;
         }
 
-        public override string ToString() => $"{Tag}: ({PositionX}, {PositionY}) ALT: {Altitude}";
+        public override string ToString() => $"{Tag}: ({PositionX}, {PositionY}), ALT: {Altitude}, VEL: {Velocity}, CRS: {Course}";
     }
 }
