@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using AirTrafficMonitoring.Lib.Interfaces;
@@ -10,6 +11,7 @@ namespace AirTrafficMonitoring.Lib
     class CollisionDetector : ICollisionDetector
     {
         public event EventHandler<CollisionEventArgs> Separation;
+        public List<CollisionPairs> CollisionPairsList { get; } = new List<CollisionPairs>();
 
         public void CheckForCollision(List<Track> TrackList)
         {
@@ -30,12 +32,48 @@ namespace AirTrafficMonitoring.Lib
                             && (currentTrack.Altitude -otherTrack.Altitude) > -300
                             && currentPoint.DistanceTo(otherPoint) < 5000)
                         {
+                            var currentColpair = new CollisionPairs(currentTrack, otherTrack, currentTrack.Timestamp);
+                            if(!IsPairInList(currentColpair)) CollisionPairsList.Add(currentColpair);
                             var handler = Separation;
-                            handler?.Invoke(this, new CollisionEventArgs(currentTrack, otherTrack, currentTrack.Timestamp));
-                        }                       
+                            handler?.Invoke(this, new CollisionEventArgs(CollisionPairsList));
+                        }                  
                     }
                 }
             }
+        }
+
+        private bool IsPairInList(CollisionPairs pairToCheck)
+        {
+            foreach (var pair in CollisionPairsList)
+            {
+                if (pair.currentTrack.Tag == pairToCheck.currentTrack.Tag &&
+                    pair.otherTrack.Tag == pairToCheck.otherTrack.Tag)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+    }
+
+    public class CollisionPairs
+    {
+        public Track currentTrack;
+        public Track otherTrack;
+        public DateTime timeOfConflict;
+
+        public CollisionPairs(Track ct, Track ot, DateTime dt)
+        {
+            currentTrack = ct;
+            otherTrack = ot;
+            timeOfConflict = dt;
+        }
+
+        public override string ToString()
+        {
+            return "Tag: " + currentTrack.Tag + " kolliderer med tag: " + otherTrack.Tag + ". Tidpunkt: " +
+                   timeOfConflict;
         }
     }
 }
