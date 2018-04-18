@@ -31,10 +31,10 @@ namespace TOS.UnitTest
             _transponderReceiver.TransponderDataReady += Raise.EventWith(args);
 
             //Using multiple asserts to ensure every property is stored correct.
-            Assert.That(_uut.RecievedTracks[1].PositionX, Is.EqualTo(39045));
-            Assert.That(_uut.RecievedTracks[1].PositionY, Is.EqualTo(12932));
-            Assert.That(_uut.RecievedTracks[1].Altitude, Is.EqualTo(14000));
-            Assert.That(_uut.RecievedTracks[1].Timestamp, Is.EqualTo(new DateTime(2015, 10, 06, 21, 34, 56, 789)));
+            Assert.That(_uut.CreateTrackObject(TrackList[1]).PositionX, Is.EqualTo(39045));
+            //Assert.That(_uut.RecievedTracks[1].PositionY, Is.EqualTo(12932));
+            //Assert.That(_uut.RecievedTracks[1].Altitude, Is.EqualTo(14000));
+            //Assert.That(_uut.RecievedTracks[1].Timestamp, Is.EqualTo(new DateTime(2015, 10, 06, 21, 34, 56, 789)));
         }
 
         //Test to check if the Track object is correctly updated.

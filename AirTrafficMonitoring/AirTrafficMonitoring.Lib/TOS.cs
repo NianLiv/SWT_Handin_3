@@ -17,12 +17,16 @@ namespace AirTrafficMonitoring.Lib
                 foreach(var line in args.TransponderData)
                     RecievedTracks.Add(CreateTrackObject(line));
 
+
+                
                 Notify(this);
                 RecievedTracks.Clear();
             };
         }
 
-        private Track CreateTrackObject(string line)
+
+        //skal gøres public til test af creation? 
+        public Track CreateTrackObject(string line)
         {
             var rawData = line.Split(';');
             if (rawData.Length != 5) return null;

@@ -8,8 +8,6 @@ namespace AirTrafficMonitoring.Lib.Interfaces
 {
     public interface ILog
     {
-        List<Track> LoggedTracks { get; }
-
-        //return type missing Logger(List<Track> logTracks);
+        void LogCollisionToFile(List<CollisionPairs> collisionPairs);
     }
 }
