@@ -57,8 +57,6 @@ namespace AirTrafficMonitoring.Lib
 
             return false;
         }
-
-        private 
     }
 
     public class CollisionPairs
