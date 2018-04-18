@@ -12,7 +12,7 @@ namespace AirTrafficMonitoring.App
         {
             Console.CursorVisible = false;
             var tos = new Tos(TransponderReceiverFactory.CreateTransponderDataReceiver());
-            var atm = new AirTrafficController(new CollisionDetector(), new TrackStorage(),  new AirSpace(), new ConsoleView(new ConsoleOutput()), null);
+            var atm = new AirTrafficController(new CollisionDetector(), new TrackStorage(),  new AirSpace(), new ConsoleView(new ConsoleOutput()), new FileLogger());
 
             tos.Attach(atm);
 
