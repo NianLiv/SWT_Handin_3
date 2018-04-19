@@ -8,6 +8,6 @@ namespace AirTrafficMonitoring.Lib.Interfaces
 {
     public interface IAirSpace
     {
-        bool IsInValidAirSpace(Track track);
+        bool IsInValidAirSpace(ITrack track);
     }
 }

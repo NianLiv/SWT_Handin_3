@@ -2,7 +2,7 @@
 
 namespace AirTrafficMonitoring.Lib
 {
-    public class Track
+    public class Track : ITrack
     {
         public string Tag { get; set; }
         public int PositionX { get; set; }
@@ -12,7 +12,7 @@ namespace AirTrafficMonitoring.Lib
         public int Course { get; set; }
         public DateTime Timestamp { get; set; }
 
-        public void Update(Track track)
+        public void Update(ITrack track)
         {
             Velocity = TrackCalculator.CalculateVelocity(PositionX, PositionY, track.PositionX, track.PositionY,
                 Timestamp, track.Timestamp);

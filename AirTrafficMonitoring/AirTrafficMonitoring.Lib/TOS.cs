@@ -8,25 +8,21 @@ namespace AirTrafficMonitoring.Lib
     // Track Objectification Software
     public class Tos : Subject<Tos>
     {
-        public List<Track> RecievedTracks { get; } = new List<Track>();
+        public List<ITrack> RecievedTracks { get; } = new List<ITrack>();
 
         public Tos(ITransponderReceiver iTransponderReceiver)
         {
             iTransponderReceiver.TransponderDataReady += (sender, args) =>
             {
-                foreach(var line in args.TransponderData)
-                    RecievedTracks.Add(CreateTrackObject(line));
-
-
-                
-                Notify(this);
                 RecievedTracks.Clear();
+                foreach (var line in args.TransponderData)
+                    if(CreateTrackObject(line) != null)
+                        RecievedTracks.Add(CreateTrackObject(line));
+                Notify(this);                
             };
         }
 
-
-        //skal gøres public til test af creation? 
-        public Track CreateTrackObject(string line)
+        private ITrack CreateTrackObject(string line)
         {
             var rawData = line.Split(';');
             if (rawData.Length != 5) return null;

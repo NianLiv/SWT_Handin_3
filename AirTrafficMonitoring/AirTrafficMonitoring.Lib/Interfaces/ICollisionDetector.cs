@@ -18,7 +18,8 @@ namespace AirTrafficMonitoring.Lib.Interfaces
     public interface ICollisionDetector
     {
         event EventHandler<CollisionEventArgs> Separation;
-        void CheckForCollision(List<Track> TrackList);
+        event EventHandler<CollisionEventArgs> NotColliding;
+        void CheckForCollision(List<ITrack> TrackList);
         List<CollisionPairs> CollisionPairsList { get; }
     }
 }

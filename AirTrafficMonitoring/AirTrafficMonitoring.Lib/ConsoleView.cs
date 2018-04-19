@@ -44,15 +44,17 @@ namespace AirTrafficMonitoring.Lib
             _output.OutputLine("╣");
         }
 
-        public void PrintTrackData(List<Track> tracks)
+        public void PrintTrackData(List<ITrack> tracks)
         {
             RenderMap(tracks);
             RenderTrackData(tracks);
         }
 
-        public void PrintCollisionTracks(List<CollisionPairs> pairs)
+        public void PrintCollisionTracks(List<CollisionPairs> pairs, bool clearArea = false)
         {
             int lineNum = 0;
+            if(clearArea) ClearCollisionArea();
+
             foreach (var pair in pairs)
             {
                 _output.SetCursorPosition(0, (Height - Height / 3) + 1 + lineNum);
@@ -61,7 +63,12 @@ namespace AirTrafficMonitoring.Lib
             }
         }
 
-        private void RenderTrackData(List<Track> tracks)
+        private void ClearCollisionArea()
+        {
+            Clear(0, (Height - Height / 3) + 1, Width - Width / 3, Height);
+        }
+
+        private void RenderTrackData(List<ITrack> tracks)
         {
             //Clear((Width - Width / 3) + 1, 0, Width - 1, Height);
 
@@ -75,16 +82,16 @@ namespace AirTrafficMonitoring.Lib
         
         }
 
-        private void RenderMap(List<Track> tracks)
+        private void RenderMap(List<ITrack> tracks)
         {
             Clear(0, 0, Width - Width / 3, Height - Height / 3);
-            var aspectW = 90000 / (Width - Width / 3);
-            var aspectH = 90000 / (Height - Height / 3);
+            var aspectW = 80000 / (Width - Width / 3);
+            var aspectH = 80000 / (Height - Height / 3);
 
             foreach (var track in tracks)
             {
                 //_output.SetCursorPosition(track.PositionX % (Width - Width / 3), track.PositionY % (Height - Height / 3));
-                _output.SetCursorPosition(track.PositionX / aspectW, track.PositionY / aspectH);
+                _output.SetCursorPosition((track.PositionX-9999) / aspectW, (track.PositionY-9999) / aspectH);
                 _output.OutputLine("x");
             }
         }

@@ -21,6 +21,12 @@ namespace AirTrafficMonitoring.Lib
             _collisonDetector.Separation += (s, e) =>
             {
                 _render.PrintCollisionTracks(e.CollisionPairs);
+                _log.LogCollisionToFile(e.CollisionPairs);
+            };
+            
+            _collisonDetector.NotColliding += (s, e) =>
+            {
+                _render.PrintCollisionTracks(e.CollisionPairs, true);
             };
         }
 
