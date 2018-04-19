@@ -5,10 +5,10 @@ namespace AirTrafficMonitoring.Lib.Interfaces
     public interface ITrackStorage
     {
         void Clear();
-        void Remove(ITrack track);
+        bool Remove(ITrack track);
         void Add(ITrack track);
         void Update(ITrack track);
-        ITrack GetTrackByTag(ITrack track);
+        ITrack GetTrackByTag(string tag);
         List<ITrack> GetAllTracks();
         bool Contains(ITrack track);
     }

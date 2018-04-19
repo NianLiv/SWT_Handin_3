@@ -15,13 +15,26 @@ namespace AirTrafficMonitoring.Lib
 
         public void Clear() => _tracks.Clear();
 
-        public void Remove(ITrack track) => _tracks.Remove(track.Tag);
+        public bool Remove(ITrack track) => _tracks.Remove(track.Tag);
 
-        public void Add(ITrack track) => _tracks.Add(track.Tag, track);
+        public void Add(ITrack track)
+        {
+            if (track.Tag.Length > 0 && !_tracks.ContainsKey(track.Tag))
+                _tracks.Add(track.Tag, track);
+        }
 
-        public void Update(ITrack track) => _tracks[track.Tag].Update(track);
+        public void Update(ITrack track)
+        {
+            if(Contains(track))
+                _tracks[track.Tag].Update(track);
+        }
 
-        public ITrack GetTrackByTag(ITrack track) => _tracks[track.Tag];
+        public ITrack GetTrackByTag(string tag)
+        {
+            if (Contains(new Track { Tag = tag }) && tag.Length > 0)
+                return _tracks[tag];
+            else return null;
+        }
 
         public List<ITrack> GetAllTracks() => _tracks.Values.ToList();
 
