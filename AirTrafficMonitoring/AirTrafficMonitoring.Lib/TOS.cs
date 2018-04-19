@@ -8,7 +8,7 @@ namespace AirTrafficMonitoring.Lib
     // Track Objectification Software
     public class Tos : Subject<Tos>
     {
-        public List<Track> RecievedTracks { get; } = new List<Track>();
+        public List<ITrack> RecievedTracks { get; } = new List<ITrack>();
 
         public Tos(ITransponderReceiver iTransponderReceiver)
         {
@@ -22,7 +22,7 @@ namespace AirTrafficMonitoring.Lib
             };
         }
 
-        private Track CreateTrackObject(string line)
+        private ITrack CreateTrackObject(string line)
         {
             var rawData = line.Split(';');
             if (rawData.Length != 5) return null;

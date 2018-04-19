@@ -44,7 +44,7 @@ namespace AirTrafficMonitoring.Lib
             _output.OutputLine("╣");
         }
 
-        public void PrintTrackData(List<Track> tracks)
+        public void PrintTrackData(List<ITrack> tracks)
         {
             RenderMap(tracks);
             RenderTrackData(tracks);
@@ -68,7 +68,7 @@ namespace AirTrafficMonitoring.Lib
             Clear(0, (Height - Height / 3) + 1, Width - Width / 3, Height);
         }
 
-        private void RenderTrackData(List<Track> tracks)
+        private void RenderTrackData(List<ITrack> tracks)
         {
             //Clear((Width - Width / 3) + 1, 0, Width - 1, Height);
 
@@ -82,7 +82,7 @@ namespace AirTrafficMonitoring.Lib
         
         }
 
-        private void RenderMap(List<Track> tracks)
+        private void RenderMap(List<ITrack> tracks)
         {
             Clear(0, 0, Width - Width / 3, Height - Height / 3);
             var aspectW = 80000 / (Width - Width / 3);

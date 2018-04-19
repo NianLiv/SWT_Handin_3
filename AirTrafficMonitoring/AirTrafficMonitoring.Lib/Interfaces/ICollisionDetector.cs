@@ -19,7 +19,7 @@ namespace AirTrafficMonitoring.Lib.Interfaces
     {
         event EventHandler<CollisionEventArgs> Separation;
         event EventHandler<CollisionEventArgs> NotColliding;
-        void CheckForCollision(List<Track> TrackList);
+        void CheckForCollision(List<ITrack> TrackList);
         List<CollisionPairs> CollisionPairsList { get; }
     }
 }
