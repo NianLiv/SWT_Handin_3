@@ -33,17 +33,15 @@ namespace AirTrafficMonitoring.Lib
                         var currentColpair = new CollisionPairs(currentTrack, otherTrack, currentTrack.Timestamp);
 
                         //Checking for event
-                        if ((currentTrack.Altitude - otherTrack.Altitude) < 1300 
-                            && (currentTrack.Altitude -otherTrack.Altitude) > -1300
-                            && currentPoint.DistanceTo(otherPoint) < 15000)
+                        if ((currentTrack.Altitude - otherTrack.Altitude) < 300 
+                            && (currentTrack.Altitude -otherTrack.Altitude) > -300
+                            && currentPoint.DistanceTo(otherPoint) < 5000)
                         {
                             if(!IsPairInList(currentColpair)) CollisionPairsList.Add(currentColpair);
 
                             //Update timestamp.
-                            //>= 2 needed to avoid NullReferenceException at very first entry.
-                            //if(CollisionPairsList.Count >= 2)
-                                CollisionPairsList.Find(e => e.currentTrack.Tag == currentTrack.Tag && e.otherTrack.Tag == otherTrack.Tag)
-                                    .timeOfConflict = currentTrack.Timestamp;
+                            CollisionPairsList.Find(e => e.currentTrack.Tag == currentTrack.Tag && e.otherTrack.Tag == otherTrack.Tag)
+                                .timeOfConflict = currentTrack.Timestamp;
 
                             //Invoking eventhandler
                             var handler = Separation;
