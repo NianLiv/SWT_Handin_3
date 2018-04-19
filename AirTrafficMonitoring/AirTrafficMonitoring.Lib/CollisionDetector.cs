@@ -58,7 +58,6 @@ namespace AirTrafficMonitoring.Lib
                             //Invoking handler to update Console.
                             var handler = NotColliding;
                             handler?.Invoke(this, new CollisionEventArgs(CollisionPairsList));
-
                         }
                     }
                 }
@@ -81,7 +80,7 @@ namespace AirTrafficMonitoring.Lib
         }
 
     }
-    //Ulitlity class to wrap collinding tracks and a DateTime-object.
+    //Utility class to wrap collinding tracks and a DateTime-object.
     public class CollisionPairs
     {
         public Track currentTrack;

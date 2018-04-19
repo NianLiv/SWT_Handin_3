@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AirTrafficMonitoring.Lib
 {
-    class TrackCalculator
+    public class TrackCalculator
     {
         public static double CalculateVelocity(int x1, int y1, int x2, int y2, DateTime lastTime, DateTime currentTime)
         {

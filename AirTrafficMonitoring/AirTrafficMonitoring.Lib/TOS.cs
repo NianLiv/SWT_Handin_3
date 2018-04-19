@@ -14,11 +14,11 @@ namespace AirTrafficMonitoring.Lib
         {
             iTransponderReceiver.TransponderDataReady += (sender, args) =>
             {
-                foreach(var line in args.TransponderData)
-                    RecievedTracks.Add(CreateTrackObject(line));
-
-                Notify(this);
                 RecievedTracks.Clear();
+                foreach (var line in args.TransponderData)
+                    if(CreateTrackObject(line) != null)
+                        RecievedTracks.Add(CreateTrackObject(line));
+                Notify(this);                
             };
         }
 

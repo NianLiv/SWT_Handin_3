@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AirTrafficMonitoring.Lib
 {
-    class Point
+    public class Point
     {
         private int X;
         private int Y;
