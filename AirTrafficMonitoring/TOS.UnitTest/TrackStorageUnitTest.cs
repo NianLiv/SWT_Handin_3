@@ -138,9 +138,15 @@ namespace TOS.UnitTest
             _track1.DidNotReceive().Update(_track1);
         }
 
+        [Test]
+        public void Update_ValidTrackNotStored_UpdateNotCalled()
+        {
+            _track1.Tag = "AAA111";
+            _uut.Update(_track1);
+            _track1.DidNotReceive().Update(_track1);
+        }
 
-
-
+        // MANGLER TEST PÅ "GetAllTracks" HVORDAN TESTER MAN PÅ EN LIST?
 
 
     }

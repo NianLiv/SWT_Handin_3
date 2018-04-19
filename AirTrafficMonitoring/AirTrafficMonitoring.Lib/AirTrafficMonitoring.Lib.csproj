@@ -55,8 +55,8 @@
     <Compile Include="Interfaces\IOutput.cs" />
     <Compile Include="Interfaces\IRender.cs" />
     <Compile Include="Interfaces\ITrackStorage.cs" />
-    <Compile Include="IObserver.cs" />
-    <Compile Include="ITrack.cs" />
+    <Compile Include="Interfaces\IObserver.cs" />
+    <Compile Include="Interfaces\ITrack.cs" />
     <Compile Include="Output.cs" />
     <Compile Include="Point.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
