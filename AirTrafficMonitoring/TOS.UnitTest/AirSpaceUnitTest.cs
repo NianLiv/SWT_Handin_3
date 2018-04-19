@@ -14,6 +14,7 @@ namespace TOS.UnitTest
     [TestFixture]
     class AirSpaceUnitTest
     {
+        //Testing with Bounday values
         [TestCase(10000, 10000, 500, true)]
         [TestCase(10000, 90000, 500, true)]
         [TestCase(90000, 10000, 500, true)]
