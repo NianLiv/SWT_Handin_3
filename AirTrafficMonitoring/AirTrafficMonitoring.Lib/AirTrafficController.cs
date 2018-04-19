@@ -4,11 +4,11 @@ namespace AirTrafficMonitoring.Lib
 {
     public class AirTrafficController : IObserver<Tos>
     {
-        private ICollisionDetector _collisonDetector;
-        private ITrackStorage _trackStorage;
-        private IAirSpace _airSpace;
-        private IRender _render;
-        private ILog _log;
+        private readonly ICollisionDetector _collisonDetector;
+        private readonly ITrackStorage _trackStorage;
+        private readonly IAirSpace _airSpace;
+        private readonly IRender _render;
+        private readonly ILog _log;
 
         public AirTrafficController(ICollisionDetector cd, ITrackStorage ts, IAirSpace airs, IRender r, ILog l)
         {

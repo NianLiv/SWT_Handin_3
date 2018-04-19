@@ -8,7 +8,7 @@ namespace AirTrafficMonitoring.Lib
     // Track Objectification Software
     public class Tos : Subject<Tos>
     {
-        public List<ITrack> RecievedTracks { get; } = new List<ITrack>();
+        public List<ITrack> RecievedTracks { get; set; } = new List<ITrack>();
 
         public Tos(ITransponderReceiver iTransponderReceiver)
         {

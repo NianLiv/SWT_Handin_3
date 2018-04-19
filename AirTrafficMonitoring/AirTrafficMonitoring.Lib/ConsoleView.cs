@@ -16,7 +16,7 @@ namespace AirTrafficMonitoring.Lib
         public ConsoleView(IOutput output)
         {
             Height = Console.LargestWindowHeight - 10;
-            Width = Console.LargestWindowWidth;
+            Width = Console.LargestWindowWidth - 15;
 
             _output = output;
 
@@ -91,7 +91,7 @@ namespace AirTrafficMonitoring.Lib
             foreach (var track in tracks)
             {
                 //_output.SetCursorPosition(track.PositionX % (Width - Width / 3), track.PositionY % (Height - Height / 3));
-                _output.SetCursorPosition((track.PositionX-9999) / aspectW, (track.PositionY-9999) / aspectH);
+                _output.SetCursorPosition((track.PositionX - 10001) / aspectW, (track.PositionY - 10001) / aspectH);
                 _output.OutputLine("x");
             }
         }
@@ -109,7 +109,7 @@ namespace AirTrafficMonitoring.Lib
 
         private void Clear(int startX, int startY, int endX, int endY)
         {
-            var clearString = new string(' ', (Width - Width / 3) - 1);
+            var clearString = new string(' ', (Width - Width / 3));
             _output.SetCursorPosition(startX, startY);
             for (int y = startY; y < endY; y++)
             {
