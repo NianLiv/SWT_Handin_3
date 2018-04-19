@@ -15,14 +15,14 @@ namespace AirTrafficMonitoring.Lib
         public event EventHandler<CollisionEventArgs> NotColliding;
         public List<CollisionPairs> CollisionPairsList { get; } = new List<CollisionPairs>();
 
-        public void CheckForCollision(List<Track> TrackList)
+        public void CheckForCollision(List<ITrack> TrackList)
         {
             for (int i = 0; i < TrackList.Count; i++)
             {
-                var currentTrack = TrackList[i];
+                Track currentTrack = TrackList[i] as Track;
                 for (int j = 0; j < TrackList.Count; j++)
                 { 
-                    var otherTrack = TrackList[j];
+                    Track otherTrack = TrackList[j] as Track;
                     if (currentTrack.Tag != otherTrack.Tag)
                     {
                         //Track coordinates in space

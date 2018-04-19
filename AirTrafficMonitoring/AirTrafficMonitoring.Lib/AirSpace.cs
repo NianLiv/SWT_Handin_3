@@ -29,7 +29,7 @@ namespace AirTrafficMonitoring.Lib
             _UpperBound = U;
         }
 
-        public bool IsInValidAirSpace(Track track)
+        public bool IsInValidAirSpace(ITrack track)
         {
             if (track.Altitude < _LowerBound
                 || track.Altitude > _UpperBound
