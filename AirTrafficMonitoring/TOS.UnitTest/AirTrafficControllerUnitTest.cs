@@ -87,6 +87,8 @@ namespace TOS.UnitTest
         [Test]
         public void Update_ArgIs3IdenticalValidTracks_UpdateIsCalledTwice()
         {
+            int containsArgValidTrack1Cnt = 0;
+
             var list = new List<ITrack> {
                 validTrack1,
                 validTrack1,
@@ -95,12 +97,21 @@ namespace TOS.UnitTest
             _tos.RecievedTracks = list;
 
             _airSpace.IsInValidAirSpace(validTrack1).Returns(true);
-            //Storage.Contains returnerer intet da den er stubbed ud.
+
+            _trackStorage.When(x => x.Contains(validTrack1)).Do(x => containsArgValidTrack1Cnt++);
+
+            _trackStorage.Contains(validTrack1).Returns(x => {
+                if (containsArgValidTrack1Cnt > 2) return true;
+                else return false;
+            });
 
             _uut.Update(_tos);
 
             _trackStorage.ReceivedWithAnyArgs(2).Update(new Track());
         }
+
+       // [Test]
+       // public void Update_
 
 
     }
