@@ -21,6 +21,6 @@ namespace ATM.IntegrationTest
             point = new Point(10, 10);
         }
 
-        public void 
+
     }
 }
