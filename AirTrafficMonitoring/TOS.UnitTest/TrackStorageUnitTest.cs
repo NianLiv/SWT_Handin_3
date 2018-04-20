@@ -2,6 +2,7 @@
 using AirTrafficMonitoring.Lib.Interfaces;
 using NUnit.Framework;
 using NSubstitute;
+using System.Collections.Generic;
 
 namespace TOS.UnitTest
 {
@@ -146,8 +147,25 @@ namespace TOS.UnitTest
             _track1.DidNotReceive().Update(_track1);
         }
 
-        // MANGLER TEST PÅ "GetAllTracks" HVORDAN TESTER MAN PÅ EN LIST?
+        [Test]
+        public void GetAllTracks_ReturnIsAList()
+        {
+            _track1.Tag = "AAA111";
+            _track2.Tag = "BBB222";
+            _track3.Tag = "CCC333";
 
+            _uut.Add(_track1);
+            _uut.Add(_track3);
+            _uut.Add(_track2);
 
+            var correctList = new List<ITrack>
+            {
+                _track1,
+                _track3, 
+                _track2
+            };
+
+            Assert.That(_uut.GetAllTracks(), Is.EqualTo(correctList));
+        }
     }
 }

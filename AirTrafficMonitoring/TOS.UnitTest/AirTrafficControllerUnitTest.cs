@@ -98,21 +98,43 @@ namespace TOS.UnitTest
 
             _airSpace.IsInValidAirSpace(validTrack1).Returns(true);
 
-            _trackStorage.When(x => x.Contains(validTrack1)).Do(x => containsArgValidTrack1Cnt++);
-
             _trackStorage.Contains(validTrack1).Returns(x => {
-                if (containsArgValidTrack1Cnt > 2) return true;
+                if (containsArgValidTrack1Cnt > 1) return true;
                 else return false;
             });
 
+            _trackStorage.When(x => x.Contains(validTrack1)).Do(x => containsArgValidTrack1Cnt++);
+            
             _uut.Update(_tos);
 
             _trackStorage.ReceivedWithAnyArgs(2).Update(new Track());
         }
 
-       // [Test]
-       // public void Update_
+        [Test]
+        public void Update_validTrackLeavesAirspaceOnSecondUpdate_RemoveIsCalledOnce()
+        {
+            bool trackIsInAirSpace = true;
 
+            var list = new List<ITrack> {
+                validTrack1,
+            };
+            _tos.RecievedTracks = list;
 
+            _trackStorage.Contains(validTrack1).Returns(true);
+            _airSpace.IsInValidAirSpace(validTrack1).Returns(x =>
+            {
+                if (trackIsInAirSpace) return true;
+                else return false; ;
+            });
+
+            _airSpace.When(x => x.IsInValidAirSpace(validTrack1)).Do(x => trackIsInAirSpace = false);
+
+            _uut.Update(_tos);
+            _uut.Update(_tos);
+
+            _trackStorage.ReceivedWithAnyArgs().Remove(new Track());
+        }
+
+        
     }
 }
