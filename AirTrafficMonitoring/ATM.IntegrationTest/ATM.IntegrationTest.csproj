@@ -56,6 +56,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IT10_ATM.cs" />
     <Compile Include="IT1_PointTrackCalculator.cs" />
     <Compile Include="IT4_TrackStorage.cs" />
     <Compile Include="IT6_CollisionPairsTrack.cs" />
