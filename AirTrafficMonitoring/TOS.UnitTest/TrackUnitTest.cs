@@ -106,6 +106,26 @@ namespace TOS.UnitTest
             Assert.That(_uut.Course, Is.Not.EqualTo(oldCourse));
         }
 
+
+
+        [Test]
+        public void Update_SameTrack()
+        {
+            _newDataTrack = new Track()
+            {
+                Tag = "BBB111",
+                Altitude = 2000,
+                Course = 180,
+                PositionX = 28756,
+                PositionY = 78562,
+                Timestamp = DateTime.Now,
+                Velocity = 218
+            };
+
+            _uut.Update(_newDataTrack);
+
+            Assert.That(_uut.Altitude, Is.EqualTo(1900));
+        }
         ///////////////////////////////////////////////////
 
     }
