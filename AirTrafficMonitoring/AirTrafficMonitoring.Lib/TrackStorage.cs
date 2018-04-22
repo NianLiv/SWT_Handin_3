@@ -19,7 +19,7 @@ namespace AirTrafficMonitoring.Lib
 
         public void Add(ITrack track)
         {
-            if (track.Tag.Length > 0 && !_tracks.ContainsKey(track.Tag))
+            if (track.Tag?.Length > 0 && !_tracks.ContainsKey(track.Tag))
                 _tracks.Add(track.Tag, track);
         }
 
@@ -38,6 +38,17 @@ namespace AirTrafficMonitoring.Lib
 
         public List<ITrack> GetAllTracks() => _tracks.Values.ToList();
 
-        public bool Contains(ITrack track) => _tracks.ContainsKey(track.Tag);
+
+        //=> _tracks.ContainsKey(track.Tag)
+        public bool Contains(ITrack track)
+        {
+            if (track.Tag == null)
+                return false;
+
+            if (_tracks.ContainsKey(track.Tag))
+            return true;
+
+            return false;
+        }
     }
 }
