@@ -60,6 +60,7 @@
     <Compile Include="IT2_ConsoleView.cs" />
     <Compile Include="IT2_TrackCalculatorTrack.cs" />
     <Compile Include="IT5_TrackTos.cs" />
+    <Compile Include="IT6_CollisionPairsTrack.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
