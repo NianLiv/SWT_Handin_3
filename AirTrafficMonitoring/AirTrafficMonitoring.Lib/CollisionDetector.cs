@@ -96,7 +96,7 @@ namespace AirTrafficMonitoring.Lib
 
         public override string ToString()
         {
-            return "Tag: " + currentTrack.Tag + " kolliderer med tag: " + otherTrack.Tag + ". Tidpunkt: " +
+            return "Tag: " + currentTrack.Tag + " kolliderer med tag: " + otherTrack.Tag + ". Tidspunkt: " +
                    timeOfConflict;
         }
     }

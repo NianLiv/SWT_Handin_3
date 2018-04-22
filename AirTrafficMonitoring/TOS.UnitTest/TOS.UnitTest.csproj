@@ -63,6 +63,7 @@
     <Compile Include="AirSpaceUnitTest.cs" />
     <Compile Include="AirTrafficControllerUnitTest.cs" />
     <Compile Include="CollisionDetectorUnitTest.cs" />
+    <Compile Include="CollisionPairsUnitTest.cs" />
     <Compile Include="PointUnitTest.cs" />
     <Compile Include="TosUnitTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

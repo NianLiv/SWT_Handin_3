@@ -102,6 +102,15 @@ namespace TOS.UnitTest
         }
 
         [Test]
+        public void Contains_TrackIsNull_ReturnFalse()
+        {
+            _track1.Tag = null;
+            Assert.That(_uut.Contains(_track1).Equals(false));
+        }
+
+
+
+        [Test]
         public void GetTrackByTag_ValidTagIsStored_ReturnedTrackHasSameTag()
         {
             var targetTag = "AAA111";
