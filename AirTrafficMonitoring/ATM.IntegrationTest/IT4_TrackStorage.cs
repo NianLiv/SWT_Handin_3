@@ -79,13 +79,40 @@ namespace ATM.IntegrationTest
         {
             _trackStorage.Add(_track);
 
-           // var tracktag = _trackStorage.GetTrackByTag("FTZ7");
-            
             Assert.That(_trackStorage.GetTrackByTag("FTZ7"), Is.EqualTo(_track));
             
         }
 
 
-        //Test Update?
+        
+        [Test]
+        public void Update_trackNewData_newValue()
+        {
+            _trackStorage.Add(_track);
+            _track.Altitude = 2000;
+
+            
+            _trackStorage.Update(_track);
+            var newtrack = _trackStorage.GetTrackByTag("FTZ7");
+
+           Assert.That(newtrack.Altitude == 2000);
+
+        }
+
+
+        [Test]
+        public void Update_trackNewData_NotOldValue()
+        {
+            _trackStorage.Add(_track);
+            var oldAltitude = _track.Altitude;
+            _track.Altitude = 2000;
+
+
+            _trackStorage.Update(_track);
+            var newtrack = _trackStorage.GetTrackByTag("FTZ7");
+
+            Assert.That(newtrack.Altitude != oldAltitude);
+
+        }
     }
 }
