@@ -56,7 +56,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IT1_TrackCalculator.cs" />
     <Compile Include="IT2_ConsoleView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
