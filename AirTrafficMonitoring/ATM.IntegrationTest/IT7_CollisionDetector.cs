@@ -13,7 +13,7 @@ namespace ATM.IntegrationTest
     class IT7_CollisionDetector
     {
         private CollisionDetector _detector;
-        private List<ITrack> TrackList;
+        private List<ITrack> TrackList = new List<ITrack>();
         private bool wasCalled = false;
 
         [SetUp]
@@ -34,7 +34,7 @@ namespace ATM.IntegrationTest
 
             Track _track2 = new Track
             {
-                Tag = "AAA111",
+                Tag = "BBB222",
                 PositionX = 15000,
                 PositionY = 30000,
                 Altitude = 850,
