@@ -15,16 +15,16 @@ namespace AirTrafficMonitoring.Lib
 
         public ConsoleView(IOutput output)
         {
-            Height = Console.LargestWindowHeight - 10;
-            Width = Console.LargestWindowWidth - 15;
-
             _output = output;
-
             SetUpConsole();
         }
 
         private void SetUpConsole()
         {
+            _output.GetLargetsScreenSize(out var w, out var h);
+            Width = w;
+            Height = h;
+
             _output.SetWindowSize(Width, Height);
             
                 
@@ -96,20 +96,9 @@ namespace AirTrafficMonitoring.Lib
             }
         }
 
-        //private void Clear(int startX, int startY, int endX, int endY)
-        //{
-        //    _output.SetCursorPosition(startX, startY);
-        //    for (int y = startY; y < endY; y++)
-        //    {
-        //        _output.SetCursorPosition(startX, y);
-        //        for (int x = startX; x < endX; x++)
-        //            _output.OutputLine(" ");
-        //    }
-        //}
-
         private void Clear(int startX, int startY, int endX, int endY)
         {
-            var clearString = new string(' ', (Width - Width / 3));
+            var clearString = new string(' ', endX);
             _output.SetCursorPosition(startX, startY);
             for (int y = startY; y < endY; y++)
             {
