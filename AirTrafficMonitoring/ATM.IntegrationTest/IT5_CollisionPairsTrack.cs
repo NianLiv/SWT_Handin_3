@@ -5,7 +5,7 @@ using System;
 namespace ATM.IntegrationTest
 {
     [TestFixture]
-    class IT6_CollisionPairsTrack
+    class IT5_CollisionPairsTrack
     {
         private Track _track1;
         private Track _track2;

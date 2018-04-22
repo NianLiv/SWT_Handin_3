@@ -22,8 +22,8 @@ namespace AirTrafficMonitoring.Lib
         private void SetUpConsole()
         {
             _output.GetLargetsScreenSize(out var w, out var h);
-            Width = w;
-            Height = h;
+            Width = w - 15;
+            Height = h - 10;
 
             _output.SetWindowSize(Width, Height);
             
@@ -70,7 +70,7 @@ namespace AirTrafficMonitoring.Lib
 
         private void RenderTrackData(List<ITrack> tracks)
         {
-            //Clear((Width - Width / 3) + 1, 0, Width - 1, Height);
+            Clear((Width - Width / 3) + 1, 0, Width - 1, Height);
 
             int lineNum = 0;
             foreach (var track in tracks)
@@ -98,7 +98,7 @@ namespace AirTrafficMonitoring.Lib
 
         private void Clear(int startX, int startY, int endX, int endY)
         {
-            var clearString = new string(' ', endX);
+            var clearString = new string(' ', endX - startX);
             _output.SetCursorPosition(startX, startY);
             for (int y = startY; y < endY; y++)
             {

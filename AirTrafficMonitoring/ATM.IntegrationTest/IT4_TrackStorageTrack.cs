@@ -11,7 +11,7 @@ using NUnit.Framework.Internal;
 namespace ATM.IntegrationTest
 {
     [TestFixture]
-    class IT4_TrackStorage
+    class IT4_TrackStorageTrack
     {
         private Track _track;
         private Track _track1;

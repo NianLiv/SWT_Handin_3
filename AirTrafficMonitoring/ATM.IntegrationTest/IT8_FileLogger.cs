@@ -12,7 +12,7 @@ using NUnit.Framework.Internal;
 namespace ATM.IntegrationTest
 {
     [TestFixture]
-    class IT9_FileLogger
+    class IT8_FileLogger
     {
         private Track _track1;
         private Track _track2;

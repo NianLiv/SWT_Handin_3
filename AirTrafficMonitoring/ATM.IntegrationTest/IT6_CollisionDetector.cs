@@ -10,7 +10,7 @@ using NUnit.Framework.Internal;
 namespace ATM.IntegrationTest
 {
     [TestFixture]
-    class IT7_CollisionDetector
+    class IT6_CollisionDetector
     {
         private CollisionDetector _detector;
         private Track _track1;

@@ -8,7 +8,7 @@ using NUnit.Framework;
 namespace ATM.IntegrationTest
 {
     [TestFixture]
-    class IT8_ConsoleViewOutput
+    class IT7_ConsoleViewOutput
     {
         private IOutput _output;
         private ConsoleView _consoleView;
@@ -116,14 +116,16 @@ namespace ATM.IntegrationTest
         public void SetUpConsole_OutputReceivedGetLargesScreenSize_ViewWidthIs80()
         {
             // ConsoleView ctor is called in SetUp().
-            Assert.That(_consoleView.Width, Is.EqualTo(80));
+            // SetUpConsole subtracts 15 from width.
+            Assert.That(_consoleView.Width, Is.EqualTo(80 - 15));
         }
 
         [Test]
         public void SetUpConsole_OutputReceivedGetLargestScreenSize_ViewHeightIs40()
         {
             // ConsoleView ctor is called in SetUp().
-            Assert.That(_consoleView.Height, Is.EqualTo(40));
+            // SetUpConsole subtracts 10 from height.
+            Assert.That(_consoleView.Height, Is.EqualTo(40 - 10));
         }
 
         [Test]
@@ -153,9 +155,5 @@ namespace ATM.IntegrationTest
             _consoleView.PrintCollisionTracks(_validCollisionPairs);
             _output.Received(1).OutputLine(Arg.Is<string>(x => x.Contains(_validCollisionPairs[0].otherTrack.Tag)));
         }
-
     }
-
-
-   
 }
