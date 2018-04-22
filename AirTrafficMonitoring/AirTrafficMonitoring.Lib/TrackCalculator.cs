@@ -15,7 +15,7 @@ namespace AirTrafficMonitoring.Lib
             var dist = PrevPoint.DistanceTo(NewPoint);
             var time = currentTime - lastTime;
 
-            return Math.Round(dist / time.TotalSeconds, 3);
+            return time.TotalSeconds == 0 ? 0 : Math.Round(dist / time.TotalSeconds, 3);
         }
 
         public static int CalculateCourse(int x1, int y1, int x2, int y2)
