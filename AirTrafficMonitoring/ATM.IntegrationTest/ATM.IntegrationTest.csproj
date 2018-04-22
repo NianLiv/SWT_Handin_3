@@ -60,6 +60,9 @@
     <Compile Include="IT4_TrackStorage.cs" />
     <Compile Include="IT8_ConsoleView.cs" />
     <Compile Include="IT2_TrackCalculatorTrack.cs" />
+    <Compile Include="IT3_AirSpaceTrack.cs" />
+    <Compile Include="IT5_TrackTos.cs" />
+    <Compile Include="IT7_CollisionDetector.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
