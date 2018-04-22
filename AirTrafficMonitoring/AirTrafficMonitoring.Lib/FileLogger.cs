@@ -12,17 +12,17 @@ namespace AirTrafficMonitoring.Lib
     {
         public string FilePath { get; set; }
 
-        public FileLogger(string path = "C:/Users/NianLiv/source/repos/SWT_Handin_3/CollisionLog.txt") => FilePath = path;
+        public FileLogger(string path = @"CollisionLog.txt") => FilePath = path;
 
         public void LogCollisionToFile(List<CollisionPairs> collisionPairs)
         {
-            //using (StreamWriter writer = new StreamWriter(FilePath, true))
-            //{
-            //    foreach( var pair in collisionPairs)
-            //    {
-            //        writer.WriteLine(pair.ToString());
-            //    }
-            //}
+            using (StreamWriter writer = new StreamWriter(FilePath, true))
+            {
+                foreach (var pair in collisionPairs)
+                {
+                    writer.WriteLine(pair.ToString());
+                }
+            }
         }
     }
 }
