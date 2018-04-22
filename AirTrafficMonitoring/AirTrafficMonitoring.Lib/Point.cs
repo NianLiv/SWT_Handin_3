@@ -8,8 +8,8 @@ namespace AirTrafficMonitoring.Lib
 {
     public class Point
     {
-        private int X;
-        private int Y;
+        public  int X { get; private set; }
+        public  int Y { get; private set; }
 
         public Point(int x, int y)
         {
