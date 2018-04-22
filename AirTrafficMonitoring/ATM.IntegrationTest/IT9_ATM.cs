@@ -270,7 +270,7 @@ namespace ATM.IntegrationTest
         }
 
         [Test]
-        public void Notify_ListWith2CollidingTracks_()
+        public void Notify_ListWith2CollidingTracks_CollisionPairStringIsWrittenToFile()
         {
             var collisionTrack1 = _tracks1[0];
             var collisionTrack2 = _tracks1[1];
