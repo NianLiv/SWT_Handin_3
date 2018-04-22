@@ -57,7 +57,7 @@ namespace ATM.IntegrationTest
         [Test]
         public void Update_TrackPositionMultipliedBySameFactor_RecalculationDosentChangeCourse()
         {
-            var oldCourse = _track.Course;
+
             var newTrack = new Track
             {
                 Tag = "AAA111",
@@ -68,12 +68,21 @@ namespace ATM.IntegrationTest
                 Timestamp = DateTime.Now,
                 Velocity = 0
             };
-
-
+           
+            // Updates uut's course to real angle.
             newTrack.PositionY *= 2;
             newTrack.PositionX *= 2;
             _track.Update(newTrack);
 
+            // Saves the course.
+            var oldCourse = _track.Course;
+
+            // Multiple the position with a factor of 2, and update the track. 
+            newTrack.PositionY *= 2;
+            newTrack.PositionX *= 2;
+            _track.Update(newTrack);
+            
+            // Course should not change. 
             Assert.That(_track.Course, Is.EqualTo(oldCourse));
         }
 
