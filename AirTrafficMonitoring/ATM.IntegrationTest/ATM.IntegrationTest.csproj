@@ -59,6 +59,7 @@
     <Compile Include="IT1_PointTrackCalculator.cs" />
     <Compile Include="IT2_ConsoleView.cs" />
     <Compile Include="IT2_TrackCalculatorTrack.cs" />
+    <Compile Include="IT3_AirSpaceTrack.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
