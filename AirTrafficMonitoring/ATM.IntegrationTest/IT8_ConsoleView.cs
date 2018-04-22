@@ -11,7 +11,7 @@ using NUnit.Framework;
 namespace ATM.IntegrationTest
 {
     [TestFixture]
-    class IT2_ConsoleView
+    class IT8_ConsoleView
     {
         private ConsoleView _uut;
         private IOutput _output;
