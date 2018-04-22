@@ -124,7 +124,7 @@ namespace TOS.UnitTest
             _airSpace.IsInValidAirSpace(validTrack1).Returns(x =>
             {
                 if (trackIsInAirSpace) return true;
-                else return false; ;
+                else return false; 
             });
 
             _airSpace.When(x => x.IsInValidAirSpace(validTrack1)).Do(x => trackIsInAirSpace = false);
