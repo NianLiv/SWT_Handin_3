@@ -195,5 +195,12 @@ namespace TOS.UnitTest
             _output.Received(1).OutputLine(Arg.Is<string>(x => x.Contains(_validCollisionPairs[0].otherTrack.Tag)));
         }
 
+        [Test]
+        public void PrintCollisionTracks_EmptyListArg2IsTrue_CollisionWindowIsCleared()
+        {
+            _uut.PrintCollisionTracks(_validCollisionPairs, true);
+            _output.Received().OutputLine(new string(' ', _width - _width / 3));
+        }
+
     }
 }
