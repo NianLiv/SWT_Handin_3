@@ -65,6 +65,7 @@
     <Compile Include="CollisionDetectorUnitTest.cs" />
     <Compile Include="CollisionPairsUnitTest.cs" />
     <Compile Include="ConsoleViewUnitTest.cs" />
+    <Compile Include="FileLoggerUnitTest.cs" />
     <Compile Include="PointUnitTest.cs" />
     <Compile Include="SubjectUnitTest.cs" />
     <Compile Include="TosUnitTest.cs" />
