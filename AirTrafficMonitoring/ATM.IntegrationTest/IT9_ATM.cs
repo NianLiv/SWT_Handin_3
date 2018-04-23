@@ -290,6 +290,5 @@ namespace ATM.IntegrationTest
             using (StreamReader reader = new StreamReader(_logPath, true))
                 Assert.That(reader.ReadToEnd(), Contains.Substring(collisionPair.ToString()));
         }
-
     }
 }
