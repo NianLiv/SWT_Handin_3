@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirTrafficMonitoring.Lib", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirTrafficMonitoring.App", "AirTrafficMonitoring.App\AirTrafficMonitoring.App.csproj", "{424892A0-258D-4075-AE62-E0B765CE10CE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TOS.UnitTest", "TOS.UnitTest\TOS.UnitTest.csproj", "{D7E3908C-C862-49EA-BA47-2BD457B34B11}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ATM.UnitTest", "TOS.UnitTest\ATM.UnitTest.csproj", "{D7E3908C-C862-49EA-BA47-2BD457B34B11}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ATM.IntegrationTest", "ATM.IntegrationTest\ATM.IntegrationTest.csproj", "{9EAE2715-509B-475C-9413-E15C4BB6470D}"
 EndProject
