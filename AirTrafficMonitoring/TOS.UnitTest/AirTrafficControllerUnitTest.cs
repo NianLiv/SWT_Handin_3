@@ -69,6 +69,18 @@ namespace TOS.UnitTest
         }
 
         [Test]
+        public void NotCollidingEventHandler_EventRaised_PrintCollisionTracksCalled()
+        {
+            var collisionList = new List<CollisionPairs> {
+                new CollisionPairs(new Track(), new Track(), new DateTime())
+            };
+
+            _collisionDetector.NotColliding += Raise.EventWith(new object(), new CollisionEventArgs(collisionList));
+
+            _render.Received(1).PrintCollisionTracks(collisionList, true);
+        }
+
+        [Test]
         public void Update_ArgIs2DifferentValidTracks_AddIsCalledTwice()
         {
             var list = new List<ITrack> {
