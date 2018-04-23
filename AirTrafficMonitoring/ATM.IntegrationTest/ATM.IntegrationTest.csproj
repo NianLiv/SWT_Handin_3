@@ -64,7 +64,6 @@
     <Compile Include="IT1_PointTrackCalculator.cs" />
     <Compile Include="IT4_TrackStorageTrack.cs" />
     <Compile Include="IT5_CollisionPairsTrack.cs" />
-    <Compile Include="IT7_ConsoleViewOutput.cs" />
     <Compile Include="IT2_TrackCalculatorTrack.cs" />
     <Compile Include="IT3_AirSpaceTrack.cs" />
     <Compile Include="IT6_CollisionDetector.cs" />
